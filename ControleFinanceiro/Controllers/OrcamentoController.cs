@@ -30,10 +30,6 @@ namespace ControleFinanceiro.Controllers
 
             PreencherModelo(model);
 
-            //Cores dos totais
-            ViewBag.ClasseValorInvestimento = (model.TotalDisponivelInvestir >= model.TotalInvestir) ? "bg-sucess" : "bg-danger";
-            ViewBag.ClasseValorGastos = (model.TotalGastos <= model.TotalGastar) ? "bg-sucess" : "bg-danger";
-
             return View(model);
         }
 
@@ -72,22 +68,22 @@ namespace ControleFinanceiro.Controllers
 
             model.TotalDisponivelInvestir = model.TotalRendas - totalGastos;
 
-            model.TotalPorcentagemInvestir = model.Metas
+            model.TotalPorcentagemMetaInvestir = model.Metas
                 .Where(x => x.Tipo.Equals(ETipoMeta.Investimento))
                 .Sum(x => x.Porcentagem);
 
-            model.TotalInvestir = model.Metas
+            model.TotalMetaInvestir = model.Metas
                 .Where(x => x.Tipo.Equals(ETipoMeta.Investimento))
                 .Sum(x => (Convert.ToDecimal(x.Porcentagem) * model.TotalRendas) / 100);
         }
 
         private void DefinirMetaGastos(OrcamentoViewModel model)
         {
-            model.TotalPorcentagemGastar = model.Metas
+            model.TotalPorcentagemMetaGastar = model.Metas
                 .Where(x => x.Tipo == ETipoMeta.Gasto)
                 .Sum(x => x.Porcentagem); ;
 
-            model.TotalGastar = (model.TotalRendas * Convert.ToDecimal(model.TotalPorcentagemGastar)) / 100;
+            model.TotalMetaGastar = (model.TotalRendas * Convert.ToDecimal(model.TotalPorcentagemMetaGastar)) / 100;
         }
         #endregion
 

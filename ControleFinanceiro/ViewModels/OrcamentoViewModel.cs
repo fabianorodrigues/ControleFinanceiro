@@ -17,15 +17,15 @@ namespace ControleFinanceiro.ViewModels
 
         public decimal TotalRendas { get; set; }
 
-        public float TotalPorcentagemInvestir { get; set; }
+        public float TotalPorcentagemMetaInvestir { get; set; }
 
-        public decimal TotalInvestir { get; set; }
+        public decimal TotalMetaInvestir { get; set; }
 
         public decimal TotalDisponivelInvestir { get; set; }
 
-        public float TotalPorcentagemGastar { get; set; }
+        public float TotalPorcentagemMetaGastar { get; set; }
 
-        public decimal TotalGastar { get; set; }
+        public decimal TotalMetaGastar { get; set; }
 
         public decimal TotalGastosLivres { get; set; }
 

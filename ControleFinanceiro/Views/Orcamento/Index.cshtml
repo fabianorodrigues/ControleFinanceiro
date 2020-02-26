@@ -2,7 +2,7 @@
 @model ControleFinanceiro.ViewModels.OrcamentoViewModel
 @{
     ViewBag.Title = "Home Page";
-    decimal valorTotalInvestimento = Model.TotalDisponivelInvestir;
+    decimal valorDisponivelInsvestir = Model.TotalDisponivelInvestir;
 }
 
 <a href="@Url.HttpRouteUrl("ListarMetas", new { })" class="btn btn-primary edit">
@@ -31,37 +31,43 @@
                     if (meta.Tipo.Equals(ETipoMeta.Investimento))
                     {
                         var valorMeta = ((Convert.ToDecimal(meta.Porcentagem) * Model.TotalRendas) / 100);
-                        var valorInvestimento = valorMeta;
+                        var valorMetaInvestir = valorMeta;
 
-                        if (Model.TotalDisponivelInvestir >= valorInvestimento)
+                        if (Model.TotalDisponivelInvestir > Model.TotalMetaInvestir)
                         {
-                            Model.TotalDisponivelInvestir -= valorInvestimento;
+                            var valorAdicional = Model.TotalDisponivelInvestir - Model.TotalMetaInvestir;
+                            valorMetaInvestir += valorAdicional / Model.Metas.Count(x => x.Tipo.Equals(ETipoMeta.Investimento));
                         }
-                        else
+                        else if (valorDisponivelInsvestir < Model.TotalMetaInvestir)
                         {
-                            valorInvestimento = Model.TotalDisponivelInvestir;
-                            Model.TotalDisponivelInvestir = 0;
+                            if (valorDisponivelInsvestir >= valorMeta)
+                            {
+                                valorDisponivelInsvestir -= valorMeta;
+                            }
+                            else
+                            {
+                                valorMetaInvestir = valorDisponivelInsvestir;
+                                valorDisponivelInsvestir = 0;
+                            }
                         }
 
                         <tr>
                             <td>@meta.Destino</td>
                             <td>@meta.Porcentagem%</td>
-                            <td>R$ @valorMeta</td>
-                            <td>R$ @valorInvestimento</td>
+                            <td>R$ @valorMeta.ToString("0.##")</td>
+                            <td>R$ @valorMetaInvestir.ToString("0.##")</td>
                         </tr>
                     }
                 }
                 <tr>
                     <td colspan="2" align="right">
-                        <strong>@Model.TotalPorcentagemInvestir%</strong>
+                        <strong>@Model.TotalPorcentagemMetaInvestir%</strong>
                     </td>
                     <td align="right">
-                        <strong>R$ @Model.TotalInvestir</strong>
+                        <strong>R$ @Model.TotalMetaInvestir.ToString("0.##")</strong>
                     </td>
                     <td align="right">
-                        <strong class="text-white @ViewBag.ClasseValorInvestimento">
-                            Total R$ @valorTotalInvestimento
-                        </strong>
+                        <strong>Total R$ @Model.TotalDisponivelInvestir.ToString("0.##")</strong>
                     </td>
                 </tr>
             </tbody>
@@ -92,17 +98,17 @@
                         <tr>
                             <td>@meta.Destino</td>
                             <td>@meta.Porcentagem%</td>
-                            <td>R$ @((Convert.ToDecimal(meta.Porcentagem) * Model.TotalRendas) / 100)</td>
+                            <td>R$ @(((Convert.ToDecimal(meta.Porcentagem) * Model.TotalRendas) / 100).ToString("0.##"))</td>
                         </tr>
                     }
                 }
                 <tr>
                     <td><strong>Total</strong></td>
                     <td align="right">
-                        <strong>@Model.TotalPorcentagemGastar%</strong>
+                        <strong>@Model.TotalPorcentagemMetaGastar%</strong>
                     </td>
                     <td align="right">
-                        <strong>R$ @Model.TotalGastar</strong>
+                        <strong>R$ @Model.TotalMetaGastar.ToString("0.##")</strong>
                     </td>
                 </tr>
             </tbody>
@@ -126,14 +132,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>R$ @Model.TotalGastosEssenciais</td>
-                    <td>R$ @Model.TotalGastosLivres</td>
+                    <td>R$ @Model.TotalGastosEssenciais.ToString("0.##")</td>
+                    <td>R$ @Model.TotalGastosLivres.ToString("0.##")</td>
                 </tr>
                 <tr>
                     <td align="right" colspan="2">
-                        <strong class="text-white @ViewBag.ClasseValorGastos">
-                            Total R$ @Model.TotalGastos
-                        </strong>
+                        <strong> @Model.TotalGastos.ToString("0.##")</strong>
                     </td>
                 </tr>
             </tbody>
@@ -162,13 +166,13 @@
                     {
                         <tr>
                             <td>@lancamento.Descricao</td>
-                            <td>R$ @lancamento.Valor</td>
+                            <td>R$ @lancamento.Valor.ToString("0.##")</td>
                         </tr>
                     }
                 }
                 <tr>
                     <td align="right" colspan="2">
-                        <strong>Total R$ @Model.TotalRendas</strong>
+                        <strong>Total R$ @Model.TotalRendas.ToString("0.##")</strong>
                     </td>
                 </tr>
             </tbody>
