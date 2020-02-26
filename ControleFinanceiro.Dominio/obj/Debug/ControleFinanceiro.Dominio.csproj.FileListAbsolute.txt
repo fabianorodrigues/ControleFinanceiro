@@ -1,0 +1,8 @@
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Domain\bin\Debug\ControleFinanceiro.Dominio.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Domain\bin\Debug\ControleFinanceiro.Dominio.pdb
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Domain\obj\Debug\ControleFinanceiro.Dominio.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Domain\obj\Debug\ControleFinanceiro.Dominio.pdb
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Dominio\bin\Debug\ControleFinanceiro.Dominio.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Dominio\bin\Debug\ControleFinanceiro.Dominio.pdb
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Dominio\obj\Debug\ControleFinanceiro.Dominio.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Dominio\obj\Debug\ControleFinanceiro.Dominio.pdb

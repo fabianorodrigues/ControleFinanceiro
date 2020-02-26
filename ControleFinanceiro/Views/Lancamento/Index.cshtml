@@ -1,0 +1,44 @@
+﻿@model IList<ControleFinanceiro.Dominio.Entidades.Lancamento>
+@{
+    ViewBag.Title = "Lançamentos";
+}
+<h3>Lançamentos</h3>
+<br />
+<p>
+    <button class="btn btn-success incluir">Novo Lançamento <i class="glyphicon glyphicon-open"></i></button>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Descricao</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Categoria</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lancamento in Model)
+        {
+            <tr>
+                <td>@lancamento.Descricao</td>
+                <td>@lancamento.Valor</td>
+                <td>@lancamento.Data.ToShortDateString()</td>
+                <td>@lancamento.Categoria</td>
+
+                <td>
+                    <button class="btn btn-success detalhes" data-id="@lancamento.Id">Detalhes <i class="glyphicon glyphicon-file"></i></button>
+                    <button class="btn btn-primary alterar" data-id="@lancamento.Id">Alterar <i class="glyphicon glyphicon-edit"></i></button>
+                    <button class="btn btn-danger deletar" data-id="@lancamento.Id">Deletar <i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="modal" class="modal fade" />
+
+@section scripts{
+    @Scripts.Render("~/bundles/clickCrud")
+}

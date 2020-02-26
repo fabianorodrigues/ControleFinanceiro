@@ -1,0 +1,30 @@
+﻿@model ControleFinanceiro.ViewModels.MetaViewModel
+
+@{
+    ViewBag.Title = "Meta";
+}
+
+<h4 class="modal-title">Detalhes da Meta</h4>
+
+<div class="container">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalhes da Meta</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            </div>
+
+            @Html.Partial("Partial/_Detalhes", Model)
+
+            <div class="modal-footer">
+                <a href="@Url.HttpRouteUrl("AlterarMeta", new { id = Model.Id })" class="btn btn-primary edit">Alterar</a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>

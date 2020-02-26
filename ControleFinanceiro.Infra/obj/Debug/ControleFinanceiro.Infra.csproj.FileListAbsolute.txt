@@ -1,0 +1,17 @@
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\ControleFinanceiro.Infra.dll.config
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\ControleFinanceiro.Infra.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\ControleFinanceiro.Infra.pdb
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\ControleFinanceiro.Dominio.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\EntityFramework.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\ControleFinanceiro.Dominio.pdb
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\EntityFramework.xml
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\obj\Debug\ControleFinanceiro.Infra.csprojAssemblyReference.cache
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\obj\Debug\ControleFinanceiro.Infra.Migrations.v1.resources
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\obj\Debug\ControleFinanceiro.Infra.csproj.GenerateResource.cache
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\obj\Debug\ControleFinanceiro.Infra.csproj.CopyComplete
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\obj\Debug\ControleFinanceiro.Infra.dll
+C:\Projetos\ControleFinanceiro\ControleFinanceiro.Infra\obj\Debug\ControleFinanceiro.Infra.pdb

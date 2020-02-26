@@ -1,0 +1,19 @@
+﻿@model ControleFinanceiro.ViewModels.MetaViewModel
+
+<div class="modal-body">
+    @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
+
+    @Html.LabelFor(m => m.Destino)
+    @Html.EditorFor(model => model.Destino, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Destino, "", new { @class = "text-danger" })
+
+    <br />
+
+    @Html.LabelFor(m => m.Porcentagem)
+    @Html.EditorFor(model => model.Porcentagem, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Porcentagem, "", new { @class = "text-danger" })
+
+    <br />
+    @Html.LabelFor(m => m.TipoMeta)
+    @Html.EnumDropDownListFor(model => model.TipoMeta, new { @class = "form-control" })
+</div>

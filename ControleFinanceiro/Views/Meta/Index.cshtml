@@ -1,0 +1,44 @@
+﻿@model IList<ControleFinanceiro.Dominio.Entidades.Meta>
+@{
+    ViewBag.Title = "Metas";
+}
+
+<h3>Metas</h3>
+<br />
+<p>
+    <button class="btn btn-success incluir">Nova Meta <i class="glyphicon glyphicon-open"></i></button>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Destino</th>
+            <th>%</th>
+            <th>Tipo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var meta in Model)
+        {
+            <tr>
+                <td>@meta.Destino</td>
+                <td>@(meta.Porcentagem)%</td>
+                <td>@meta.Tipo</td>
+
+                <td>
+                    <button class="btn btn-success detalhes" data-id="@meta.Id">Detalhes <i class="glyphicon glyphicon-file"></i></button>
+                    <button class="btn btn-primary alterar" data-id="@meta.Id">Alterar <i class="glyphicon glyphicon-edit"></i></button>
+                    <button class="btn btn-danger deletar" data-id="@meta.Id">Deletar <i class="glyphicon glyphicon-trash"></i></button>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<div id="modal" class="modal fade" />
+
+@section scripts{
+    @Scripts.Render("~/bundles/clickCrud")
+}

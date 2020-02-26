@@ -1,0 +1,39 @@
+﻿@model ControleFinanceiro.ViewModels.LancamentoViewModel
+@{
+    ViewBag.Title = "Incluir Lançamento";
+}
+
+<h2>Novo Lançamento</h2>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        @using (Html.BeginForm("Incluir", "Lancamento", FormMethod.Post))
+        {
+            <div class="modal-header">
+                <h4 class="modal-title">Novo Lançamento</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            </div>
+
+            @Html.AntiForgeryToken()
+
+            @Html.Partial("Partial/_Form", Model);
+
+            <div class="modal-footer">
+                <div>
+                    <input type="submit" value="Inlcuir" class="btn btn-success" />
+                    <input type="button" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+    @Scripts.Render("~/bundles/methods_pt");
+}

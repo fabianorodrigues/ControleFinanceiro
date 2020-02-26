@@ -1,0 +1,180 @@
+﻿@using ControleFinanceiro.Dominio.Enums
+@model ControleFinanceiro.ViewModels.OrcamentoViewModel
+@{
+    ViewBag.Title = "Home Page";
+    decimal valorTotalInvestimento = Model.TotalDisponivelInvestir;
+}
+
+<a href="@Url.HttpRouteUrl("ListarMetas", new { })" class="btn btn-primary edit">
+    <i class="glyphicon glyphicon-edit"></i>
+    Editar Metas
+</a>
+<hr />
+
+<div class="card border-info">
+    <div class="card-header bg-info">
+        <h4>Metas de Investimentos</h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Destino</th>
+                    <th>Meta %</th>
+                    <th>Meta</th>
+                    <th>Disponível</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var meta in Model.Metas)
+                {
+                    if (meta.Tipo.Equals(ETipoMeta.Investimento))
+                    {
+                        var valorMeta = ((Convert.ToDecimal(meta.Porcentagem) * Model.TotalRendas) / 100);
+                        var valorInvestimento = valorMeta;
+
+                        if (Model.TotalDisponivelInvestir >= valorInvestimento)
+                        {
+                            Model.TotalDisponivelInvestir -= valorInvestimento;
+                        }
+                        else
+                        {
+                            valorInvestimento = Model.TotalDisponivelInvestir;
+                            Model.TotalDisponivelInvestir = 0;
+                        }
+
+                        <tr>
+                            <td>@meta.Destino</td>
+                            <td>@meta.Porcentagem%</td>
+                            <td>R$ @valorMeta</td>
+                            <td>R$ @valorInvestimento</td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    <td colspan="2" align="right">
+                        <strong>@Model.TotalPorcentagemInvestir%</strong>
+                    </td>
+                    <td align="right">
+                        <strong>R$ @Model.TotalInvestir</strong>
+                    </td>
+                    <td align="right">
+                        <strong class="text-white @ViewBag.ClasseValorInvestimento">
+                            Total R$ @valorTotalInvestimento
+                        </strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+
+<div class="card border-warning">
+    <div class="card-header bg-warning">
+        <h4>Metas de Gastos</h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Destino</th>
+                    <th>Meta %</th>
+                    <th>Meta</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var meta in Model.Metas)
+                {
+                    if (meta.Tipo.Equals(ETipoMeta.Gasto))
+                    {
+                        <tr>
+                            <td>@meta.Destino</td>
+                            <td>@meta.Porcentagem%</td>
+                            <td>R$ @((Convert.ToDecimal(meta.Porcentagem) * Model.TotalRendas) / 100)</td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td align="right">
+                        <strong>@Model.TotalPorcentagemGastar%</strong>
+                    </td>
+                    <td align="right">
+                        <strong>R$ @Model.TotalGastar</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+
+<div class="card border-danger">
+    <div class="card-header bg-danger">
+        <h4>Gastos</h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Gastos Essenciais</th>
+                    <th>Gastos Livres</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>R$ @Model.TotalGastosEssenciais</td>
+                    <td>R$ @Model.TotalGastosLivres</td>
+                </tr>
+                <tr>
+                    <td align="right" colspan="2">
+                        <strong class="text-white @ViewBag.ClasseValorGastos">
+                            Total R$ @Model.TotalGastos
+                        </strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+
+<div class="card border-success">
+    <div class="card-header bg-success">
+        <h4>Rendas</h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Renda</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var lancamento in Model.Lancamentos)
+                {
+                    if (lancamento.Categoria.Equals(ECategoria.Remuneracao) || lancamento.Categoria.Equals(ECategoria.OutrasRendas))
+                    {
+                        <tr>
+                            <td>@lancamento.Descricao</td>
+                            <td>R$ @lancamento.Valor</td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    <td align="right" colspan="2">
+                        <strong>Total R$ @Model.TotalRendas</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

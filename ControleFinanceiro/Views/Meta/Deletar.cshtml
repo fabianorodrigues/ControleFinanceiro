@@ -1,0 +1,37 @@
+﻿@model ControleFinanceiro.ViewModels.MetaViewModel
+
+@{
+    ViewBag.Title = "Deletar Meta";
+}
+
+
+<h2>Deletar Meta</h2>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h4 class="modal-title">Deletar Meta</h4>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        </div>
+
+        @Html.Partial("Partial/_Detalhes", Model)
+
+        <div class="modal-footer">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Deletar" class="btn btn-warning" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>

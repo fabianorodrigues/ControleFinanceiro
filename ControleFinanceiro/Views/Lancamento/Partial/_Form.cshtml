@@ -1,0 +1,32 @@
+﻿@model ControleFinanceiro.ViewModels.LancamentoViewModel
+
+<div class="modal-body">
+    @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
+
+    @Html.LabelFor(m => m.Descricao)
+    @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+
+    <br />
+
+    @Html.LabelFor(m => m.Valor)
+    @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+
+    <br />
+
+    @Html.LabelFor(m => m.Data)
+    @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger", @type = "date" })
+
+    <br />
+
+    @Html.LabelFor(m => m.Categoria)
+    @Html.EnumDropDownListFor(model => model.Categoria, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(m => m.LancamentoMensal)
+    @Html.CheckBoxFor(m => m.LancamentoMensal, new { @class = "form-check-label" })
+
+</div>
